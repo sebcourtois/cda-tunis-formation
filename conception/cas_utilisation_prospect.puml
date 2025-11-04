@@ -1,4 +1,5 @@
-@startuml
+@startuml cas d'utilisation prospect
+title Diagramme de cas d'utilisation - Prospect
 left to right direction
 actor "Prospect" as prospect
 actor "Apprenant" as learner

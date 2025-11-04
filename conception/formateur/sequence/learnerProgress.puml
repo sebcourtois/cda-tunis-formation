@@ -1,0 +1,12 @@
+@startuml Suivi de la progression des apprenants
+
+title diagramme de sequence - Suivi de la progression des apprenants
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+@enduml

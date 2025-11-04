@@ -1,0 +1,21 @@
+@startuml Commenter un article du forum
+
+title diagramme de sequence - Commenter un article / commentaire du forum
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+formateur -> ui : Appuie sur le bouton "repondre"
+ui -> ui : Affiche la zone de texte en dessous de l'article / commentaire
+formateur -> ui : Écris le commentaire dans la zone de texte et valide
+ui -> serveur : Requete POST /Comments
+serveur -> db : Ajoute les données
+db --> serveur : Reponse valide
+serveur --> ui : Reponse valide
+ui -> ui : Affiche le commentaire en dessous de l'article / commentaire
+
+@enduml

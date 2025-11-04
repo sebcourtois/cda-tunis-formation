@@ -1,0 +1,21 @@
+@startuml creation de cours
+
+title diagramme de sequence - Création de cours
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+formateur -> ui : Clique sur le bouton "créer un cours"
+ui -> ui : Affiche la page de création
+formateur -> ui : Remplis la page, ajoute des document et valide
+ui -> serveur : Requete POST /lessons
+serveur -> db : Ajoute les données
+db --> serveur : Reponse valide
+serveur --> ui : Reponse valide
+ui -> ui : Affiche la confirmation de la création du cours
+
+@enduml

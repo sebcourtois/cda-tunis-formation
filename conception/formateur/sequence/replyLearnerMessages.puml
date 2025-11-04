@@ -1,0 +1,12 @@
+@startuml Répondre aux messages des apprenants
+
+title diagramme de sequence - Répondre aux messages des apprenants
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+@enduml
