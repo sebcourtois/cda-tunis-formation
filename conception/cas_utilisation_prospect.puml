@@ -1,0 +1,46 @@
+@startuml
+left to right direction
+actor "Prospect" as prospect
+actor "Apprenant" as learner
+
+prospect <|-down- learner
+
+rectangle "Catalogue de Cursus" {
+  usecase "Rechercher des cursus" as searchCursus
+  usecase "Consulter\ncontenu du cursus" as viewCursus
+  usecase "S'inscrire au cursus" as registerCursus
+}
+
+prospect --> searchCursus
+prospect --> viewCursus
+prospect --> registerCursus
+
+searchCursus <. viewCursus: <<extend>>
+viewCursus <. registerCursus: <<extend>>
+
+rectangle "Catalogue de Cours" {
+  usecase "Rechercher des cours" as searchLesson
+  usecase "Consulter\ncontenu du cours" as viewLesson
+  usecase "S'inscrire au cours" as registerLesson
+}
+
+prospect --> searchLesson
+prospect --> viewLesson
+prospect --> registerLesson
+
+searchLesson <. viewLesson: <<extend>>
+viewLesson <. registerLesson: <<extend>>
+
+rectangle "Plateforme Apprenant" {
+  usecase "Créer un compte" as signUp
+  usecase "Se connecter" as logIn
+}
+
+prospect --> signUp
+learner --> logIn
+
+registerCursus ..> signUp: <<include>>
+registerLesson ..> signUp: <<include>>
+signUp .> logIn: <<include>>
+
+@enduml
