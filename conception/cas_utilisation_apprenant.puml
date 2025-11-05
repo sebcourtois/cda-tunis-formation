@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+
+actor "Apprenant\nConnecté" as learner
+actor "Formateur\nConnecté" as trainer
+
+rectangle "Dashboard Apprenant" {
+  usecase "Gérer son profil" as manageProfile
+  usecase "Parcourir ses cours" as browseLessons
+  usecase "Suivre un cours" as viewLesson
+  usecase "Discuter avec\nle formateur" as talkToTrainer
+  usecase "Rejoindre une\nclasse virtuelle\nplanifiée" as joinClassroom
+  usecase "Télécharger\ndes certificats" as dnlCertificates
+  usecase "Télécharger des\nressources\npédagogiques" as dnlLearningRcs
+  usecase "Passer l'évaluation" as takeAssessment
+  usecase "Consulter ses\nrésultats" as browseResults
+  usecase "Consulter sa progression" as viewProgress
+}
+
+browseLessons <.. viewLesson: <<extend>>
+browseLessons ..> viewProgress: <<include>>
+viewLesson <.. joinClassroom: <<extend>>
+viewLesson <.. talkToTrainer: <<extend>>
+viewLesson <.. dnlLearningRcs: <<extend>>
+viewLesson <.. takeAssessment: <<extend>>
+browseResults <.. dnlCertificates: <<extend>>
+
+trainer --> talkToTrainer
+trainer -up-> joinClassroom
+
+learner --> manageProfile
+learner --> browseLessons
+learner --> browseResults
+learner --> viewLesson
+learner --> viewProgress
+learner --> dnlLearningRcs
+learner --> talkToTrainer
+learner --> joinClassroom
+learner --> takeAssessment
+learner --> dnlCertificates
+
+
+
+
+
+
+@enduml
