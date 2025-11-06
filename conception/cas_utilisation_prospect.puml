@@ -11,9 +11,9 @@ rectangle "Catalogue de Cursus" {
   usecase "S'inscrire au cursus" as registerCursus
 }
 
-prospect --> searchCursus
-prospect --> viewCursus
-prospect --> registerCursus
+prospect -- searchCursus
+prospect -- viewCursus
+prospect -- registerCursus
 
 searchCursus <. viewCursus: <<extend>>
 viewCursus <. registerCursus: <<extend>>
@@ -24,9 +24,9 @@ rectangle "Catalogue de Cours" {
   usecase "S'inscrire au cours" as registerLesson
 }
 
-prospect --> searchLesson
-prospect --> viewLesson
-prospect --> registerLesson
+prospect -- searchLesson
+prospect -- viewLesson
+prospect -- registerLesson
 
 searchLesson <. viewLesson: <<extend>>
 viewLesson <. registerLesson: <<extend>>
@@ -36,8 +36,8 @@ rectangle "Plateforme Apprenant" {
   usecase "Se connecter" as logIn
 }
 
-prospect --> signUp
-learner --> logIn
+prospect -- signUp
+learner -- logIn
 
 registerCursus ..> signUp: <<include>>
 registerLesson ..> signUp: <<include>>
