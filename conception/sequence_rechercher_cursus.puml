@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Prospect" as prospect
+participant "Front-end" as front
+participant "Back-end" as back
+
+== Initialisation ==
+
+prospect -> front: demande le catalogue des cursus
+front -> back: GET /api/cursus
+front <-- back: liste de tous les cursus
+prospect <-- front: affiche tous les cursus
+
+== Recherche selon des critères ==
+
+prospect -> front: applique des filtres
+front -> back: GET /api/cursus/{criteria...}
+front <-- back: liste des cursus correspondants
+alt liste de cursus vide
+    prospect <-- front: affiche "Aucun cursus ne correspond..."
+else
+    prospect <-- front: affiche les cursus correspondants
+end
+
+@enduml

@@ -18,6 +18,20 @@ rectangle "Dashboard Apprenant" {
   usecase "Consulter sa progression" as viewProgress
 }
 
+trainer -- talkToTrainer
+trainer -up- joinClassroom
+
+learner -right- manageProfile
+learner -right- browseLessons
+learner -right- browseResults
+learner -right- viewLesson
+learner -right- viewProgress
+learner -right- dnlLearningRcs
+learner -right- talkToTrainer
+learner -right- joinClassroom
+learner -right- takeAssessment
+learner -right- dnlCertificates
+
 browseLessons <.. viewLesson: <<extend>>
 browseLessons ..> viewProgress: <<include>>
 viewLesson <.. joinClassroom: <<extend>>
@@ -26,19 +40,7 @@ viewLesson <.. dnlLearningRcs: <<extend>>
 viewLesson <.. takeAssessment: <<extend>>
 browseResults <.. dnlCertificates: <<extend>>
 
-trainer --> talkToTrainer
-trainer -up-> joinClassroom
 
-learner --> manageProfile
-learner --> browseLessons
-learner --> browseResults
-learner --> viewLesson
-learner --> viewProgress
-learner --> dnlLearningRcs
-learner --> talkToTrainer
-learner --> joinClassroom
-learner --> takeAssessment
-learner --> dnlCertificates
 
 
 
