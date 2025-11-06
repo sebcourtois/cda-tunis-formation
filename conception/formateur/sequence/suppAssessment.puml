@@ -1,0 +1,12 @@
+@startuml suppression d'évaluation
+
+title diagramme de sequence - Suppression d'évaluation
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml créer une évaluation
+
+title diagramme de sequence - Créer une évaluation
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+formateur -> ui : Appuie sur le bouton "créer une évaluation"
+ui -> ui : Affiche la page de création
+formateur -> ui : Remplis la page, ajoute des document et valide
+ui -> serveur : Requete POST /Assessments
+serveur -> db : Ajoute les données
+db --> serveur : Reponse valide
+serveur --> ui : Reponse valide
+ui -> ui : Affiche la confirmation de la création de l'évaluation
+
+@enduml

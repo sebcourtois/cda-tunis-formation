@@ -1,0 +1,22 @@
+@startuml Planifier une classe virtuelle
+
+title diagramme de sequence - Planifier une classe virtuelle
+
+actor Formateur as formateur
+
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+formateur -> ui : Clique sur le bouton "Planifier une classe virtuelle"
+ui -> ui : Affiche le formulaire de planification
+formateur -> ui : Remplir le formulaire et valider
+ui -> serveur : Requete POST /Classrooms
+serveur -> db : Ajoute les données
+db --> serveur : Reponse valide
+serveur --> ui : Reponse valide
+ui -> ui : Affiche la confirmation de la planification
+
+@enduml

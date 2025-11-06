@@ -1,0 +1,19 @@
+@startuml mise en ligne
+
+title diagramme de sequence - Mise en ligne
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+formateur -> ui : Clique sur le bouton "mise en ligne"
+ui -> serveur : Requete PUT /lessons/{id}
+serveur -> db : Modifie la valeur de l'attribut "online" sur true
+db --> serveur : Reponse valide
+serveur --> ui : Reponse valide
+ui -> ui : Affiche la confirmation de la mise en ligne
+
+@enduml

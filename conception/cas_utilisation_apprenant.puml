@@ -1,4 +1,5 @@
-@startuml
+@startuml cas d'utilisation Apprenant
+title Diagramme de cas d'utilisation - Apprenant
 left to right direction
 
 actor "Apprenant\nConnecté" as learner

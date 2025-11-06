@@ -1,0 +1,12 @@
+@startuml Créer une classe virtuelle
+
+title diagramme de sequence - Créer une classe virtuelle
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+@enduml

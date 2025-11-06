@@ -1,0 +1,12 @@
+@startuml Creation d'article de forum
+
+title diagramme de sequence - Création d'article de forum
+
+actor Formateur as formateur
+participant "U I" as ui
+participant "Serveur / API" as serveur
+participant DB as db
+
+autonumber
+
+@enduml

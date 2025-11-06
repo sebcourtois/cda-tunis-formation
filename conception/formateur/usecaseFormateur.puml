@@ -1,0 +1,79 @@
+@startuml formateur
+
+left to right direction
+
+title Diagramme de cas d'utilisation - Formateur
+
+:Formateur connecté: as formateur
+
+rectangle system {
+    ' Forum
+    usecase "Forum" as forum
+        usecase "Créer un article" as createTopic
+        usecase "Commenter un article / commentaire" as commentTopic
+
+    ' Classroom
+    usecase "classe virtuelle" as classroom
+        usecase "Planification" as planificationClassroom
+        usecase "Création" as createClassroom
+
+    ' Online
+    usecase "Mise en ligne" as putOnline
+
+    usecase "Répondre aux messages des apprenants" as replyLearnerMessages
+
+    ' Suivi
+    usecase "Suivi" as suivi
+        usecase "Résultat des apprenants" as learnerResults
+        usecase "Progression des apprenants" as learnerProgress
+
+    ' Gestion
+    usecase "Gestion" as gestion
+        ' Évaluations
+        usecase "Évaluations" as assessmentManagement
+            usecase "Suppression" as suppAssessment
+            usecase "Modification" as modifAssessment
+            usecase "Création" as createAssessment
+        ' Cours
+        usecase "Cours" as lessonManagement
+            usecase "Suppression" as suppLessons
+            usecase "Modification" as modifLessons
+            usecase "Création" as createLessons
+}
+
+' Forum
+formateur --> forum
+    forum <|- createTopic
+    forum <|-- commentTopic
+
+' Classroom
+formateur --> classroom
+    classroom <|- planificationClassroom
+    classroom <|-- createClassroom
+
+' Online
+formateur --> putOnline
+    createLessons <.. putOnline : <<extend>>
+    createAssessment <... putOnline : <<extend>>
+
+formateur --> replyLearnerMessages
+
+' Suivi
+formateur --> suivi
+    suivi <|- learnerResults
+    suivi <|-- learnerProgress
+
+' Gestion
+formateur --> gestion
+    ' Évaluations
+    gestion <|- assessmentManagement
+        assessmentManagement <|-- suppAssessment
+        assessmentManagement <|-- modifAssessment
+        assessmentManagement <|-- createAssessment
+    ' Cours
+    gestion <|-- lessonManagement
+        lessonManagement <|-- suppLessons
+        lessonManagement <|-- modifLessons
+        lessonManagement <|-- createLessons
+
+@enduml
